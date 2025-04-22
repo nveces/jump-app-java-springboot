@@ -129,13 +129,27 @@ public class JumpsController {
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json; utf-8");
             con.setRequestProperty("Accept", "application/json");
-            con.setRequestProperty("React-Modifier", headers.get("react-modifier").get(0));
-            con.setRequestProperty("X-Request-Id", headers.get("x-request-id").get(0));
-            con.setRequestProperty("X-B3-Spanid", headers.get("x-b3-spanid").get(0));
-            con.setRequestProperty("X-B3-Parentspanid", headers.get("x-b3-parentspanid").get(0));
-            con.setRequestProperty("X-B3-Sampled", headers.get("x-b3-sampled").get(0));
-            con.setRequestProperty("X-B3-Flags", headers.get("x-b3-Flags").get(0));
-            con.setRequestProperty("X-Ot-Span-Context", headers.get("x-ot-span-context").get(0));
+            if (headers.get("react-modifier") != null) {
+                con.setRequestProperty("React-Modifier", headers.get("react-modifier").get(0));
+            }
+            if (headers.get("x-request-id") != null) {
+                con.setRequestProperty("X-Request-Id", headers.get("x-request-id").get(0));
+            }
+            if (headers.get("x-b3-spanid") != null) {
+                con.setRequestProperty("X-B3-Spanid", headers.get("x-b3-spanid").get(0));
+            }
+            if (headers.get("x-b3-parentspanid") != null) {
+                con.setRequestProperty("X-B3-Parentspanid", headers.get("x-b3-parentspanid").get(0));
+            }
+            if (headers.get("x-b3-sampled") != null) {
+                con.setRequestProperty("X-B3-Sampled", headers.get("x-b3-sampled").get(0));
+            }
+            if (headers.get("x-b3-Flags") != null) {
+                con.setRequestProperty("X-B3-Flags", headers.get("x-b3-Flags").get(0));
+            }
+            if (headers.get("x-ot-span-context") != null) {
+                con.setRequestProperty("X-Ot-Span-Context", headers.get("x-ot-span-context").get(0));
+            }
             con.setDoOutput(true);
             String jsonInputString = new Gson().toJson(jumpPost);
             try (OutputStream os = con.getOutputStream()) {
@@ -164,13 +178,27 @@ public class JumpsController {
         System.out.println("Responding POST Response /jump - " + response.toString());
         HttpHeaders resHeaders = new HttpHeaders();
         resHeaders.add("Content-Type", "application/json");
-        resHeaders.add("React-Modifier", headers.get("React-Modifier").get(0));
-        resHeaders.add("X-Request-Id", headers.get("X-Request-Id").get(0));
-        resHeaders.add("X-B3-Spanid", headers.get("X-B3-Spanid").get(0));
-        resHeaders.add("X-B3-Parentspanid", headers.get("X-B3-Parentspanid").get(0));
-        resHeaders.add("X-B3-Sampled", headers.get("X-B3-Sampled").get(0));
-        resHeaders.add("X-B3-Flags", headers.get("X-B3-Flags").get(0));
-        resHeaders.add("X-Ot-Span-Context", headers.get("X-Ot-Span-Context").get(0));
+        if (headers.get("React-Modifier") != null) {
+            resHeaders.add("React-Modifier", headers.get("React-Modifier").get(0));
+        }
+        if (headers.get("X-Request-Id") != null) {
+            resHeaders.add("X-Request-Id", headers.get("X-Request-Id").get(0));
+        }
+        if (headers.get("X-B3-Spanid") != null) {
+            resHeaders.add("X-B3-Spanid", headers.get("X-B3-Spanid").get(0));
+        }
+        if (headers.get("X-B3-Parentspanid") != null) {
+            resHeaders.add("X-B3-Parentspanid", headers.get("X-B3-Parentspanid").get(0));
+        }
+        if (headers.get("X-B3-Sampled") != null) {
+            resHeaders.add("X-B3-Sampled", headers.get("X-B3-Sampled").get(0));
+        }
+        if (headers.get("X-B3-Flags") != null) {
+            resHeaders.add("X-B3-Flags", headers.get("X-B3-Flags").get(0));
+        }
+        if (headers.get("X-Ot-Span-Context") != null) {
+            resHeaders.add("X-Ot-Span-Context", headers.get("X-Ot-Span-Context").get(0));
+        }
         return new ResponseEntity(response, resHeaders, HttpStatus.OK);
     }
 
