@@ -66,13 +66,27 @@ public class JumpsController {
 
             // Perform GET
             System.out.println("Sending GET Response /jump to " + url);
-            con.setRequestProperty("React-Modifier", headers.get("react-modifier").get(0));
-            con.setRequestProperty("X-Request-Id", headers.get("x-request-id").get(0));
-            con.setRequestProperty("X-B3-Spanid", headers.get("x-b3-spanid").get(0));
-            con.setRequestProperty("X-B3-Parentspanid", headers.get("x-b3-parentspanid").get(0));
-            con.setRequestProperty("X-B3-Sampled", headers.get("x-b3-sampled").get(0));
-            con.setRequestProperty("X-B3-Flags", headers.get("x-b3-Flags").get(0));
-            con.setRequestProperty("X-Ot-Span-Context", headers.get("x-ot-span-context").get(0));
+            if (headers.get("react-modifier") != null) {
+                con.setRequestProperty("React-Modifier", headers.get("react-modifier").get(0));
+            }
+            if (headers.get("x-request-id") != null) {
+                con.setRequestProperty("X-Request-Id", headers.get("x-request-id").get(0));
+            }
+            if (headers.get("x-b3-spanid") != null) {
+                con.setRequestProperty("X-B3-Spanid", headers.get("x-b3-spanid").get(0));
+            }
+            if (headers.get("x-b3-parentspanid") != null) {
+                con.setRequestProperty("X-B3-Parentspanid", headers.get("x-b3-parentspanid").get(0));
+            }
+            if (headers.get("x-b3-sampled") != null) {
+                con.setRequestProperty("X-B3-Sampled", headers.get("x-b3-sampled").get(0));
+            }
+            if (headers.get("x-b3-Flags") != null) {
+                con.setRequestProperty("X-B3-Flags", headers.get("x-b3-Flags").get(0));
+            }
+            if (headers.get("x-ot-span-context") != null) {
+                con.setRequestProperty("X-Ot-Span-Context", headers.get("x-ot-span-context").get(0));
+            }
             con.setRequestMethod("GET");
 
             // handler Headers
